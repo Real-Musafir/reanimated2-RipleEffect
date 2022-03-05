@@ -28,12 +28,14 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 25,
+    // iOS
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-
-    elevation: 2, //this is for android
+    // Android
+    elevation: 2,
   },
 });
