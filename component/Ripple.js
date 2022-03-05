@@ -5,11 +5,18 @@ import Animated, {
   runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
+  useSharedValue,
 } from "react-native-reanimated";
 
 function Ripple({ style, onTap, children }) {
+  const centerX = useSharedValue(0);
+  const centerY = useSharedValue(0);
+
   const tapGestureEvent = useAnimatedGestureHandler({
-    onStart: () => {},
+    onStart: (tapEvent) => {
+      centerX.value = tapEvent.x;
+      centerY.value = tapEvent.y;
+    },
     onActive: () => {
       if (onTap) runOnJS(onTap)();
     },
@@ -17,7 +24,9 @@ function Ripple({ style, onTap, children }) {
   });
 
   const rStyle = useAnimatedStyle(() => {
-    const circleRadius = 200;
+    const circleRadius = 20;
+    const translateX = centerX.value - circleRadius;
+    const translateY = centerY.value - circleRadius;
     return {
       width: circleRadius * 2,
       height: circleRadius * 2,
@@ -25,9 +34,13 @@ function Ripple({ style, onTap, children }) {
       opacity: 0.2,
       backgroundColor: "red",
       position: "absolute",
+      top: 0,
+      left: 0,
       transform: [
+        { translateX },
+        { translateY },
         {
-          scale: 0.5,
+          scale: 1,
         },
       ],
     };
