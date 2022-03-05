@@ -1,13 +1,16 @@
 import React from "react";
 import { View } from "react-native";
 import { TapGestureHandler } from "react-native-gesture-handler";
-import Animated, { useAnimatedGestureHandler } from "react-native-reanimated";
+import Animated, {
+  runOnJS,
+  useAnimatedGestureHandler,
+} from "react-native-reanimated";
 
 function Ripple({ style, onTap, children }) {
   const tapGestureEvent = useAnimatedGestureHandler({
     onStart: () => {},
     onActive: () => {
-      console.log("tap");
+      if (onTap) runOnJS(onTap)();
     },
     onEnd: () => {},
   });

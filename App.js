@@ -5,7 +5,12 @@ import Ripple from "./component/Ripple";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Ripple style={styles.ripple}>
+      <Ripple
+        style={styles.ripple}
+        onTap={() => {
+          console.log("tap");
+        }}
+      >
         <Text style={{ fontSize: 25 }}>Tap</Text>
       </Ripple>
     </View>
