@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import Ripple from "./component/Ripple";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={styles.ripple}></View>
+      <Ripple style={styles.ripple}>
+        <Text style={{ fontSize: 25 }}>Tap</Text>
+      </Ripple>
     </View>
   );
 }
@@ -23,6 +26,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 0 },
     shadowRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
 
     elevation: 2, //this is for android
   },
