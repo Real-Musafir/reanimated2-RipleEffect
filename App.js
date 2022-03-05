@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>sdf</Text>
+      <View style={styles.ripple}></View>
     </View>
   );
 }
@@ -15,5 +15,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  ripple: {
+    width: 200,
+    height: 200,
+    backgroundColor: "white",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 0 },
+    shadowRadius: 20,
+
+    elevation: 2, //this is for android
   },
 });
